@@ -1076,7 +1076,7 @@ if(k!==null){
   }).catch(lost);
 }else{
   /* ================= bản thử + tab người tặng ================= */
-  $('tabs').hidden=false;$('demoChip').hidden=false;
+  $('demoChip').hidden=false;   // huynh 27/11: bỏ tab "Người tặng" (khách chỉ nhắn ảnh + lời chúc, shop làm hộ)
   const chips=$('chips');
   [['','Không nhạc']].concat(Object.entries(TRACKS)).forEach(([v,t])=>{
     const l=document.createElement('label');const i=document.createElement('input');i.type='radio';i.name='nhac';i.value=v;i.checked=v===data.nhac;

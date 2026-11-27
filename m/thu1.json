@@ -1,0 +1,16 @@
+{
+ "to": "Gửi cậu",
+ "msg": "Đây là móc khoá thử đầu tiên của PEAKER TAP. Chạm là hiện — nếu cậu đọc được dòng này thì chip chạy rồi đó.",
+ "sig": "— PEAKER",
+ "song": "",
+ "nhac": "ngot-ngao",
+ "box": "cam",
+ "more": [
+  {
+   "msg": "Đây là trang 2. Vuốt sang trái thêm lần nữa nhé →"
+  },
+  {
+   "msg": "Trang 3: mỗi trang có thể là một ảnh và một lời chúc. Tối đa 10 trang."
+  }
+ ]
+}

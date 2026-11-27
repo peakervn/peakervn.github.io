@@ -324,6 +324,39 @@ input:checked~b{color:var(--fg)}
   *,*::before,*::after{animation-duration:.001s!important;animation-iteration-count:1!important;transition-duration:.001s!important}
   .hand,.swipe,.twk{display:none}
 }
+
+/* ===== CHỦ ĐỀ GIÁNG SINH (trường cd:"noel", huynh 27/11) — tuyết rơi, dây đèn, hộp đỏ nơ vàng, thiệp cành thông ===== */
+[data-box="do"]{--b1:#d93545;--b2:#8c1424;--b3:#ec5262;--r1:#ffdc8e;--r2:#c9962f;--halo:rgba(255,92,100,.30);
+  --f1:#f7dca4;--f2:#d6a456;--f3:#fff3d4;--fink:#6a4614}
+html[data-cd="noel"]{--bg:#0b1219;--bg2:#121c25;--accent:#ec5262;--gold:#ffdc8e}
+html[data-cd="noel"] body{background:radial-gradient(120% 70% at 50% -10%,#16293a 0,#0b1219 62%) fixed,#0b1219}
+html[data-cd="noel"] .wrap{position:relative;z-index:1}
+#snow{position:fixed;inset:0;overflow:hidden;pointer-events:none;z-index:0}
+#snow i{position:absolute;top:-24px;border-radius:50%;background:radial-gradient(circle,#fff 0 35%,rgba(255,255,255,0) 72%);opacity:.9;will-change:transform;animation:snowA linear infinite}
+#snow i.b{animation-name:snowB}
+#snow i.f{border-radius:0;background:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3E%3Cg fill='none' stroke='%23ffffff' stroke-width='1.6' stroke-linecap='round'%3E%3Cpath d='M15 2v26M3.7 8.5l22.6 13M3.7 21.5l22.6-13'/%3E%3Cpath d='M11 4.5l4 3 4-3M11 25.5l4-3 4 3M4.5 13l4.5-1.5-1-4.5M25.5 17l-4.5 1.5 1 4.5M4.5 17l4.5 1.5-1 4.5M25.5 13l-4.5-1.5 1-4.5'/%3E%3C/g%3E%3C/svg%3E") center/contain no-repeat;opacity:.75}
+@keyframes snowA{from{transform:translate3d(0,0,0) rotate(0)}to{transform:translate3d(40px,112vh,0) rotate(200deg)}}
+@keyframes snowB{from{transform:translate3d(0,0,0) rotate(0)}to{transform:translate3d(-40px,112vh,0) rotate(-200deg)}}
+.scene>.garland{position:absolute;left:-16px;right:-16px;top:-14px;height:58px;pointer-events:none;z-index:2}
+.garland svg{position:absolute;inset:0;width:100%;height:100%;overflow:visible}
+.garland b{position:absolute;width:9px;height:13px;margin-left:-4.5px;border-radius:45% 45% 50% 50%/40% 40% 60% 60%;background:var(--c);
+  box-shadow:0 0 10px 2px var(--c);transform:rotate(var(--r,0deg));transform-origin:50% 0;animation:twinkle 1.6s ease-in-out infinite}
+.garland b::before{content:"";position:absolute;left:2px;top:-3px;width:5px;height:4px;border-radius:1px;background:#5d6a64}
+@keyframes twinkle{0%,100%{opacity:1}50%{opacity:.35}}
+html[data-cd="noel"] .scene{padding-top:40px}
+html[data-cd="noel"] .scene h1 em{color:#ffdc8e}
+html[data-cd="noel"] .tape{background:repeating-linear-gradient(135deg,rgba(214,42,58,.92) 0 7px,rgba(255,250,245,.94) 7px 14px)}
+html[data-cd="noel"] .card.more .tape{background:repeating-linear-gradient(135deg,rgba(38,128,80,.9) 0 7px,rgba(255,250,245,.94) 7px 14px)}
+html[data-cd="noel"] .card .to{color:#b3202f!important}
+html[data-cd="noel"] .sig{color:#1f7a4a}
+html[data-cd="noel"] .card::before{border-color:rgba(179,32,47,.22)}
+html[data-cd="noel"] .card .photo{z-index:2}
+html[data-cd="noel"] .dd1{width:34px;height:34px;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 34 34'%3E%3Cg transform='rotate(-14 17 17)'%3E%3Cpath fill='%232e8b57' d='M17 17C13 12 7 12 3 14c2 1 2 3 1 4 3-1 4 1 4 3 2-2 4-2 5-1 0-2 1-3 4-3z'/%3E%3Cpath fill='%23237a4a' d='M17 17c4-5 10-5 14-3-2 1-2 3-1 4-3-1-4 1-4 3-2-2-4-2-5-1 0-2-1-3-4-3z'/%3E%3Ccircle cx='15' cy='19' r='3' fill='%23d42a3a'/%3E%3Ccircle cx='20' cy='19.5' r='3' fill='%23c01f30'/%3E%3Ccircle cx='17.5' cy='15' r='3' fill='%23e8475a'/%3E%3Ccircle cx='16.3' cy='14' r='.9' fill='%23fff' opacity='.7'/%3E%3C/g%3E%3C/svg%3E")}
+html[data-cd="noel"] .dd2{width:30px;height:30px;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3E%3Cg fill='none' stroke='%2389b6d6' stroke-width='1.8' stroke-linecap='round'%3E%3Cpath d='M15 2v26M3.7 8.5l22.6 13M3.7 21.5l22.6-13'/%3E%3Cpath d='M11 4.5l4 3 4-3M11 25.5l4-3 4 3M4.5 13l4.5-1.5-1-4.5M25.5 17l-4.5 1.5 1 4.5M4.5 17l4.5 1.5-1 4.5M25.5 13l-4.5-1.5 1-4.5'/%3E%3C/g%3E%3C/svg%3E")}
+html[data-cd="noel"] .seal{background:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cg transform='translate(5 5) scale(.47)'%3E%3Cg fill='none' stroke='%23ffe9ea' stroke-width='2.6' stroke-linecap='round'%3E%3Cpath d='M15 2v26M3.7 8.5l22.6 13M3.7 21.5l22.6-13'/%3E%3Cpath d='M11 4.5l4 3 4-3M11 25.5l4-3 4 3M4.5 13l4.5-1.5-1-4.5M25.5 17l-4.5 1.5 1 4.5M4.5 17l4.5 1.5-1 4.5M25.5 13l-4.5-1.5 1-4.5'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E") center/100% no-repeat,radial-gradient(circle at 35% 30%,#ec5a68,#c42536 55%,#931826)}
+html[data-cd="noel"] .card.more.txt::before,html[data-cd="noel"] .card.more.txt::after{content:"✦";color:#c9962f}
+.pine{position:absolute;right:-4px;top:-6px;width:128px;height:60px;pointer-events:none;z-index:1;background:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 98 46'%3E%3Cg stroke='%231f6b43' stroke-width='1.6' stroke-linecap='round'%3E%3Cpath d='M92 4C70 10 50 18 28 34' stroke='%23704a2a' stroke-width='2.2'/%3E%3Cpath d='M88 5l-4 -4M88 5l-2 6'/%3E%3Cpath d='M82 7l-5 -4M82 7l-2 7'/%3E%3Cpath d='M76 9l-5 -5M76 9l-1 7'/%3E%3Cpath d='M70 11l-6 -4M70 11l-1 8'/%3E%3Cpath d='M64 14l-6 -4M64 14l-1 8'/%3E%3Cpath d='M58 17l-6 -5M58 17l0 8'/%3E%3Cpath d='M52 20l-6 -4M52 20l0 8'/%3E%3Cpath d='M46 23l-6 -5M46 23l1 8'/%3E%3Cpath d='M40 26l-6 -4M40 26l1 7'/%3E%3Cpath d='M34 30l-5 -4M34 30l1 7'/%3E%3C/g%3E%3Cg stroke='%232e8b57' stroke-width='1.4' stroke-linecap='round'%3E%3Cpath d='M72 10C66 20 64 28 62 38' stroke='%23704a2a' stroke-width='1.6'/%3E%3Cpath d='M70 14l-5 -2M70 14l5 1'/%3E%3Cpath d='M68 19l-5 -2M68 19l5 1'/%3E%3Cpath d='M66 24l-5 -2M66 24l5 1'/%3E%3Cpath d='M64 29l-5 -2M64 29l5 1'/%3E%3Cpath d='M63 34l-5 -2M63 34l5 1'/%3E%3C/g%3E%3Cpath d='M50 21v9' stroke='%23c9962f' stroke-width='1'/%3E%3Ccircle cx='50' cy='35' r='6' fill='%23d42a3a'/%3E%3Ccircle cx='48' cy='33' r='1.6' fill='%23fff' opacity='.6'/%3E%3Crect x='48' y='28' width='4' height='2.5' rx='.6' fill='%23ffd98a'/%3E%3Cpath d='M80 7v13' stroke='%23c9962f' stroke-width='1'/%3E%3Ccircle cx='80' cy='25' r='5' fill='%23ffd98a'/%3E%3Ccircle cx='78.3' cy='23.4' r='1.3' fill='%23fff' opacity='.7'/%3E%3Crect x='78.3' y='19' width='3.4' height='2.2' rx='.5' fill='%23c9962f'/%3E%3C/svg%3E") center/contain no-repeat}
+@media (prefers-reduced-motion:reduce){#snow,.garland b{animation:none!important}#snow{display:none}}
 </style>
 </head>
 <body data-box="cam">
@@ -469,7 +502,8 @@ input:checked~b{color:var(--fg)}
 const $=id=>document.getElementById(id);
 const reduce=matchMedia('(prefers-reduced-motion: reduce)').matches;
 const weak=(navigator.hardwareConcurrency||4)<=4||(navigator.deviceMemory||8)<=4;
-const BOXES={cam:'Cam',hong:'Hồng',xanh:'Xanh ngọc',kem:'Kem'};
+const BOXES={cam:'Cam',hong:'Hồng',xanh:'Xanh ngọc',kem:'Kem',do:'Đỏ Noel'};
+const THEMES={noel:1};   // chủ đề giao diện (trường cd)
 const TRACKS={'ngot-ngao':'Ngọt ngào','vui-tuoi':'Vui tươi','sau-lang':'Sâu lắng','sinh-nhat':'Sinh nhật','xin-loi':'Xin lỗi'};
 /* nhạc Pixabay (Pixabay Content License): Romantic – andriig (thay Secret Love 26/11: huynh nghe thấy ghê) · A Small Miracle – Romarecord1973 ·
    Romantic Piano – PaulYudin · Happy Birthday – The_Mountain · Sad Piano Emotional Rain Story – alex-morgan.
@@ -479,6 +513,7 @@ const TAPS=reduce?1:3;
 
 let data={to:'Gửi cậu',msg:$('fMsg').value,sig:'— một người bí mật',img:null,song:'',yt:'',ys:20,nhac:'ngot-ngao',box:'cam'};
 let ready=true;
+if(new URLSearchParams(location.search).get('cd')==='noel'&&!new URLSearchParams(location.search).has('k')){data.cd='noel';data.box='do';data.nhac='vui-tuoi';data.to='Gửi cậu';data.msg='Giáng sinh này, mong cậu luôn ấm áp, bình an và cười thật nhiều. Cảm ơn vì năm nay đã có cậu bên cạnh.'}   // xem thử: ?cd=noel
 const S={taps:0,opened:false,pending:false,timers:[],typing:null,hearts:0};
 function later(fn,ms){S.timers.push(setTimeout(fn,ms))}
 
@@ -490,6 +525,10 @@ function sprite(r,draw){const c=document.createElement('canvas');c.width=c.heigh
 const SPARK=sprite(16,(x,r)=>{const g=x.createRadialGradient(r,r,0,r,r,r);g.addColorStop(0,'rgba(255,255,255,1)');g.addColorStop(.25,'rgba(255,222,150,.9)');g.addColorStop(1,'rgba(255,170,60,0)');x.fillStyle=g;x.fillRect(0,0,r*2,r*2)});
 function heartPath(x,X,Y,s){x.beginPath();x.moveTo(X,Y+s*.3);x.bezierCurveTo(X,Y,X-s*.5,Y,X-s*.5,Y+s*.32);x.bezierCurveTo(X-s*.5,Y+s*.62,X,Y+s*.78,X,Y+s);x.bezierCurveTo(X,Y+s*.78,X+s*.5,Y+s*.62,X+s*.5,Y+s*.32);x.bezierCurveTo(X+s*.5,Y,X,Y,X,Y+s*.3);x.closePath()}
 const HEARTS=['#ff5a6e','#ff7a1a','#ffb3c1'].map(col=>sprite(32,(x,r)=>{x.shadowColor=col;x.shadowBlur=8;x.fillStyle=col;heartPath(x,r,r*.45,r*1.15);x.fill()}));
+const NOEL=[sprite(32,(x,r)=>{x.shadowColor='#ffd98a';x.shadowBlur=8;x.fillStyle='#ffd98a';x.beginPath();for(let i=0;i<10;i++){const a=-Math.PI/2+i*Math.PI/5,q=i%2?r*.42:r*.9;x.lineTo(r+Math.cos(a)*q,r+Math.sin(a)*q)}x.closePath();x.fill()}),
+  sprite(32,(x,r)=>{x.shadowColor='#bfe3ff';x.shadowBlur=6;x.strokeStyle='#fff';x.lineWidth=3;x.lineCap='round';for(let i=0;i<3;i++){const a=i*Math.PI/3;x.beginPath();x.moveTo(r-Math.cos(a)*r*.82,r-Math.sin(a)*r*.82);x.lineTo(r+Math.cos(a)*r*.82,r+Math.sin(a)*r*.82);x.stroke()}}),
+  HEARTS[0]];
+function ICO(){return data&&data.cd==='noel'?NOEL:HEARTS}
 function add(p){parts.push(p);if(!running){running=true;lastT=performance.now();requestAnimationFrame(loop)}}
 function loop(now){
   const dt=Math.min(.05,(now-lastT)/1000);lastT=now;
@@ -509,14 +548,14 @@ const R=(a,b)=>a+Math.random()*(b-a);
 function sparks(x,y,n,spd){if(reduce)return;for(let i=0;i<n;i++){const a=R(0,Math.PI*2),v=R(.3,1)*(spd||220);add({k:'s',x,y,vx:Math.cos(a)*v,vy:Math.sin(a)*v-60,g:220,drag:.96,t:0,life:R(.5,1.1),s:R(5,10)})}}
 function confetti(x,y){
   if(reduce)return;const cs=getComputedStyle(document.body);
-  const cols=[cs.getPropertyValue('--b1'),cs.getPropertyValue('--r1'),'#ffd28a','#ff7a1a','#fff3e2','#ff5a6e'].map(s=>s.trim()).filter(Boolean);
+  const cols=(data.cd==='noel'?['#d93545','#2e8b57','#ffdc8e','#ffffff','#ec5262','#7fd3a0']:[cs.getPropertyValue('--b1'),cs.getPropertyValue('--r1'),'#ffd28a','#ff7a1a','#fff3e2','#ff5a6e']).map(s=>s.trim()).filter(Boolean);
   const n=weak?45:70;
   for(let i=0;i<n;i++){const a=R(-Math.PI*.85,-Math.PI*.15),v=R(420,1050);
     add({k:'c',x:x+R(-30,30),y,vx:Math.cos(a)*v,vy:Math.sin(a)*v,g:1300,drag:.975,t:0,life:R(1.3,2.1),w:R(6,10),h:R(10,16),col:cols[i%cols.length],rot:R(0,6),vr:R(-8,8),flip:R(4,12)})}
-  for(let i=0;i<(weak?8:12);i++){const a=R(-Math.PI*.8,-Math.PI*.2),v=R(300,700);add({k:'h',x,y,vx:Math.cos(a)*v,vy:Math.sin(a)*v,g:500,drag:.97,t:0,life:R(1.6,2.4),s:R(10,18),img:HEARTS[i%3],w:R(3,6),ph:R(0,6),amp:R(4,12)})}
+  for(let i=0;i<(weak?8:12);i++){const a=R(-Math.PI*.8,-Math.PI*.2),v=R(300,700);add({k:'h',x,y,vx:Math.cos(a)*v,vy:Math.sin(a)*v,g:500,drag:.97,t:0,life:R(1.6,2.4),s:R(10,18),img:ICO()[i%3],w:R(3,6),ph:R(0,6),amp:R(4,12)})}
   sparks(x,y,weak?10:18,420);
 }
-function floatHearts(x,y,n){for(let i=0;i<n;i++)add({k:'h',x:x+R(-14,14),y,vx:R(-30,30),vy:R(-260,-140),g:-20,drag:.99,t:0,life:R(1.6,2.6),s:R(11,22),img:HEARTS[(Math.random()*3)|0],w:R(2,5),ph:R(0,6),amp:R(6,18)})}
+function floatHearts(x,y,n){for(let i=0;i<n;i++)add({k:'h',x:x+R(-14,14),y,vx:R(-30,30),vy:R(-260,-140),g:-20,drag:.99,t:0,life:R(1.6,2.6),s:R(11,22),img:ICO()[(Math.random()*3)|0],w:R(2,5),ph:R(0,6),amp:R(6,18)})}
 
 /* ================= nhạc: file nhac/<id>.mp3, bật đúng trong cú chạm mở ================= */
 const isIOS=/iP(hone|od|ad)/.test(navigator.userAgent)||(navigator.platform==='MacIntel'&&navigator.maxTouchPoints>1);
@@ -780,6 +819,7 @@ function doodles(c,ph){
   dd[2].style.left=(flip?lx:rx+2)+'px';dd[2].style.top=(T+Math.round(H*.3))+'px';
 }
 function fitAll(){
+  document.querySelectorAll('#deck .card').forEach(c=>{let p=c.querySelector(':scope>.pine');if(data.cd==='noel'&&!p){p=document.createElement('i');p.className='pine';p.setAttribute('aria-hidden','true');c.appendChild(p)}if(p)p.hidden=data.cd!=='noel'});
   fitCard($('card'),String(data.msg).normalize('NFC'));
   document.querySelectorAll('#deck .card.more').forEach(c=>{const m=c.querySelector(':scope>.msg');fitCard(c,m?(m.dataset.full||(m.dataset.full=m.textContent)):'')});
   fitPhotos();
@@ -946,11 +986,30 @@ function loadYT(){
 }
 
 /* ================= về trạng thái hộp đóng ================= */
+/* chủ đề: đổi chữ màn hộp + tuyết + dây đèn (tạo 1 lần, rẻ: CSS) */
+const KICK=document.querySelector('.scene .kicker'),H1=document.querySelector('.scene h1'),KICK0=KICK.textContent,H10=H1.innerHTML;
+function theme(){
+  const n=data.cd==='noel';document.documentElement.dataset.cd=data.cd||'';
+  KICK.textContent=n?'Merry Christmas':KICK0;H1.innerHTML=n?'Ông già Noel vừa để lại<br>cho bạn một <em>bất ngờ</em>':H10;
+  let sn=$('snow');if(n&&!sn&&!reduce){sn=document.createElement('div');sn.id='snow';sn.setAttribute('aria-hidden','true');
+    for(let i=0;i<(weak?22:34);i++){const e=document.createElement('i'),f=i%9===0,z=f?R(12,18):R(2.5,7);
+      e.className=(i%2?'b':'')+(f?' f':'');e.style.cssText='left:'+R(-4,100).toFixed(1)+'%;width:'+z.toFixed(1)+'px;height:'+z.toFixed(1)+'px;opacity:'+(f?.7:R(.45,.95)).toFixed(2)+';animation-duration:'+R(z<4?14:9,z<4?22:16).toFixed(1)+'s;animation-delay:'+(-R(0,20)).toFixed(1)+'s';sn.appendChild(e)}
+    document.body.prepend(sn)}
+  if(sn)sn.hidden=!n;
+  let gl=document.querySelector('.garland');
+  if(n&&!gl){gl=document.createElement('div');gl.className='garland';gl.setAttribute('aria-hidden','true');
+    gl.innerHTML='<svg viewBox="0 0 200 40" preserveAspectRatio="none"><path d="M0 6Q50 58 100 6Q150 58 200 6" fill="none" stroke="#3b4a44" stroke-width="1.4" vector-effect="non-scaling-stroke"/></svg>';
+    const C=['#ff4d5e','#ffd36b','#4fd18b','#6cc6ff','#ff8a3d'];let k=0;
+    for(let s=0;s<2;s++)for(let j=1;j<=6;j++){const t=j/7,x=s*100+100*t,y=6+104*t*(1-t),b=document.createElement('b');
+      b.style.cssText='left:'+(x/2).toFixed(2)+'%;top:'+(y/40*100).toFixed(1)+'%;--c:'+C[k%5]+';--r:'+((t-.5)*-40).toFixed(0)+'deg;animation-delay:'+(-(k*.37)%1.6).toFixed(2)+'s';k++;gl.appendChild(b)}
+    $('scene').prepend(gl)}
+  if(gl)gl.hidden=!n;
+}
 function reset(){
   S.timers.forEach(clearTimeout);S.timers=[];clearInterval(S.typing);S.typing=null;
   S.taps=0;S.opened=false;S.pending=false;document.body.classList.remove('cardmode');
   mStop(true);M.shown=false;pill();
-  document.body.dataset.box=data.box;
+  document.body.dataset.box=data.box;theme();
   [lid,gift,$('rays'),$('scene'),$('card'),$('bloom')].forEach(el=>{if(el.getAnimations)el.getAnimations().forEach(a=>{if(!(window.CSSAnimation&&a instanceof CSSAnimation))a.cancel()})});
   clearInterval(S.idleT);S.idleT=setInterval(()=>{if(S.opened||S.taps||!ready||document.hidden||$('scene').hidden)return;shake(1);const q=seamPoint();sparks(q.x,q.y,5,150)},4200);   // lâu không chạm: hộp tự lắc mời
   setLift(0);dots(0);$('hand').hidden=false;
@@ -975,7 +1034,7 @@ function norm(j){
     song:/^https:\/\//i.test(j.song||'')?String(j.song):'',
     yt:/^[A-Za-z0-9_-]{11}$/.test(j.yt||'')?j.yt:'',
     ys:j.ys==null||j.ys===''?(j.yt?0:DEFYS[nh]||0):Math.max(0,Math.min(36000,parseInt(j.ys,10)||0)),
-    nhac:/^[a-z0-9-]{1,40}$/.test(nh)?nh:'',box:BOXES[bx]?bx:'cam',iw:+j.iw||0,ih:+j.ih||0,
+    nhac:/^[a-z0-9-]{1,40}$/.test(nh)?nh:'',cd:THEMES[j.cd]?String(j.cd):'',box:BOXES[bx]?bx:(j.cd==='noel'?'do':'cam'),iw:+j.iw||0,ih:+j.ih||0,
     d:/^\d{1,2}[./-]\d{1,2}[./-]\d{2,4}$/.test(j.d||'')?String(j.d):'',
     more:(Array.isArray(j.more)?j.more:[]).slice(0,9).map(p=>{const pi=String(p&&p.img||'');
       const pv=String(p&&p.vid||''),po=String(p&&p.poster||'');
@@ -1057,7 +1116,7 @@ if(k!==null){
     M.trying=false;tryBtn.textContent='▶ Nghe thử';
     const s=$('fSong').value.trim();
     data={to:$('fTo').value.trim()||'Gửi bạn',msg:$('fMsg').value.trim()||'…',sig:$('fSig').value.trim(),img,
-      song:/^https?:\/\//i.test(s)?s:'',yt:ytId(s),ys:secs($('fAt').value),nhac:pick('nhac'),box:pick('box')||'cam'};
+      song:/^https?:\/\//i.test(s)?s:'',yt:ytId(s),ys:secs($('fAt').value),nhac:pick('nhac'),box:pick('box')||'cam',cd:data.cd||''};
     tab('recv');
   };
   reset();enter();

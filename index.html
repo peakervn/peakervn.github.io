@@ -368,11 +368,6 @@ html[data-cd="noel"] .card.more.txt::before,html[data-cd="noel"] .card.more.txt:
     <button class="mbtn" id="mbtn" hidden aria-label="Tắt nhạc"><span class="eq"><i></i><i></i><i></i></span></button>
   </header>
   <button class="mask" id="mask" hidden>♪ Chạm để bật nhạc</button>
-  <div class="tabs" role="tablist" id="tabs" hidden>
-    <button role="tab" id="tRecv" aria-selected="true">Người nhận</button>
-    <button role="tab" id="tSend" aria-selected="false">Người tặng</button>
-  </div>
-
   <!-- NGƯỜI NHẬN -->
   <main id="recv" style="display:flex;flex-direction:column;flex:1">
     <p class="demo-chip" id="demoChip" hidden>Bản xem thử — đây là thứ người nhận sẽ thấy</p>
@@ -455,44 +450,6 @@ html[data-cd="noel"] .card.more.txt::before,html[data-cd="noel"] .card.more.txt:
     <p class="sr" id="live" aria-live="polite"></p>
   </main>
 
-  <!-- NGƯỜI TẶNG (chỉ ở bản thử, không có ?k=) -->
-  <section id="send" hidden>
-    <div class="form">
-      <h2>Gói một món quà<br>vào móc khoá</h2>
-      <p class="lead">Điền vài dòng, chọn nhạc và kiểu hộp, rồi bấm “Xem thử” để thấy đúng như người nhận khi chạm móc.</p>
-
-      <div class="step"><div class="h"><i>1</i>Gửi cho ai</div>
-        <label class="field"><span>Dòng trên nhãn quà</span><input id="fTo" maxlength="30" value="Gửi cậu" placeholder="Gửi cậu, Gửi mẹ yêu…"></label>
-      </div>
-
-      <div class="step"><div class="h"><i>2</i>Lời nhắn</div>
-        <label class="field"><span>Điều bạn muốn nói</span><textarea id="fMsg" maxlength="220">Cảm ơn vì đã luôn ở đây những lúc tớ tệ nhất. Tớ không giỏi nói, nên tớ để lời này trong móc khoá.</textarea></label>
-        <div class="count" id="cnt"></div>
-        <label class="field"><span>Ký tên</span><input id="fSig" maxlength="30" value="— một người bí mật"></label>
-      </div>
-
-      <div class="step"><div class="h"><i>3</i>Ảnh<small>không bắt buộc</small></div>
-        <label class="filebox" for="fImg"><span class="thumb" id="thumb">＋</span><span><b>Chọn ảnh</b><small>Ảnh đôi, ảnh kỷ niệm. Người nhận sẽ cào lớp nhũ để thấy ảnh.</small></span><input type="file" id="fImg" accept="image/*"></label>
-        <button class="linkbtn" id="noImg" hidden>Bỏ ảnh, dùng hình minh hoạ</button>
-      </div>
-
-      <div class="step"><div class="h"><i>4</i>Nhạc khi mở hộp</div>
-        <div class="chips" id="chips" role="radiogroup" aria-label="Chọn nhạc"></div>
-        <div class="row">
-          <label class="field"><span>Bắt đầu từ (điệp khúc)</span><input id="fAt" value="0:20" inputmode="numeric" maxlength="8"></label>
-          <button class="ghost" id="tryMusic" type="button">▶ Nghe thử</button>
-        </div>
-        <label class="field"><span>Link bài hát (không bắt buộc) — link YouTube sẽ hiện thành khung phát nhỏ</span><input id="fSong" placeholder="Dán link YouTube / Spotify" inputmode="url"></label>
-      </div>
-
-      <div class="step"><div class="h"><i>5</i>Kiểu hộp</div>
-        <div class="swatches" id="swatches" role="radiogroup" aria-label="Chọn kiểu hộp"></div>
-      </div>
-
-      <button class="btn" id="preview">Xem thử như người nhận</button>
-      <p class="note">Bản thử: ảnh và lời nhắn chỉ nằm trên máy bạn, không gửi đi đâu.</p>
-    </div>
-  </section>
   <footer>PEAKER<span>.</span> TAP · CHẠM LÀ HIỆN</footer>
 </div>
 
@@ -511,7 +468,7 @@ const TRACKS={'ngot-ngao':'Ngọt ngào','vui-tuoi':'Vui tươi','sau-lang':'Sâ
 const DEFYS={'ngot-ngao':0,'vui-tuoi':0,'sau-lang':0,'sinh-nhat':20,'xin-loi':50,'giang-sinh':0};
 const TAPS=reduce?1:3;
 
-let data={to:'Gửi cậu',msg:$('fMsg').value,sig:'— một người bí mật',img:null,song:'',yt:'',ys:20,nhac:'ngot-ngao',box:'cam'};
+let data={to:'Gửi cậu',msg:'Cảm ơn vì đã luôn ở đây những lúc tớ tệ nhất. Tớ không giỏi nói, nên tớ để lời này trong móc khoá.',sig:'— một người bí mật',img:null,song:'',yt:'',ys:20,nhac:'ngot-ngao',box:'cam'};
 let ready=true;
 if(new URLSearchParams(location.search).get('cd')==='noel'&&!new URLSearchParams(location.search).has('k')){data.cd='noel';data.box='do';data.nhac='giang-sinh';data.yt='';data.ys=0;data.to='Gửi cậu';data.msg='Giáng sinh này, mong cậu luôn ấm áp, bình an và cười thật nhiều. Cảm ơn vì năm nay đã có cậu bên cạnh.'}   // xem thử: ?cd=noel
 const S={taps:0,opened:false,pending:false,timers:[],typing:null,hearts:0};
@@ -1075,50 +1032,8 @@ if(k!==null){
     if(pend)openGift(false);else if(!t)enter();
   }).catch(lost);
 }else{
-  /* ================= bản thử + tab người tặng ================= */
-  $('demoChip').hidden=false;   // huynh 27/11: bỏ tab "Người tặng" (khách chỉ nhắn ảnh + lời chúc, shop làm hộ)
-  const chips=$('chips');
-  [['','Không nhạc']].concat(Object.entries(TRACKS)).forEach(([v,t])=>{
-    const l=document.createElement('label');const i=document.createElement('input');i.type='radio';i.name='nhac';i.value=v;i.checked=v===data.nhac;
-    const s=document.createElement('span');s.className='chip';s.textContent=t;l.append(i,s);chips.appendChild(l)});
-  const sw=$('swatches');
-  Object.entries(BOXES).forEach(([v,t])=>{
-    const l=document.createElement('label');const i=document.createElement('input');i.type='radio';i.name='box';i.value=v;i.checked=v===data.box;
-    const m=document.createElement('span');m.className='mini';m.dataset.box=v;const b=document.createElement('b');b.textContent=t;l.append(i,m,b);sw.appendChild(l)});
-  const tab=which=>{const r=which==='recv';$('recv').hidden=!r;$('send').hidden=r;$('tRecv').setAttribute('aria-selected',r);$('tSend').setAttribute('aria-selected',!r);
-    if(r)reset();else{mStop(true);M.shown=false;pill()}window.scrollTo(0,0)};
-  $('tRecv').onclick=()=>tab('recv');$('tSend').onclick=()=>tab('send');
-  const cnt=()=>{const n=Array.from($('fMsg').value).length;$('cnt').textContent=n+'/220';$('cnt').classList.toggle('near',n>200)};
-  $('fMsg').addEventListener('input',cnt);cnt();
-  let img=null;
-  $('fImg').addEventListener('change',e=>{
-    const f=e.target.files&&e.target.files[0];if(!f)return;
-    const url=URL.createObjectURL(f),im=new Image();
-    im.onload=()=>{const s=Math.min(1,1400/Math.max(im.naturalWidth,im.naturalHeight)),c=document.createElement('canvas');
-      c.width=Math.round(im.naturalWidth*s);c.height=Math.round(im.naturalHeight*s);c.getContext('2d').drawImage(im,0,0,c.width,c.height);
-      img=c.toDataURL('image/jpeg',.86);URL.revokeObjectURL(url);const t=$('thumb');t.textContent='';const ti=new Image();ti.src=img;ti.alt='';t.appendChild(ti);$('noImg').hidden=false};
-    im.onerror=()=>{URL.revokeObjectURL(url);alert('Không đọc được ảnh này, bạn thử ảnh khác nhé.')};
-    im.src=url;
-  });
-  $('noImg').onclick=()=>{img=null;$('fImg').value='';$('thumb').textContent='＋';$('noImg').hidden=true};
-  const pick=n=>{const c=document.querySelector(`input[name="${n}"]:checked`);return c?c.value:''};
-  sw.addEventListener('change',()=>{document.body.dataset.box=pick('box')});
-  const tryBtn=$('tryMusic');
-  tryBtn.onclick=()=>{   // nghe thử ngay trong cú bấm
-    if(M.on&&M.trying){mStop();M.trying=false;tryBtn.textContent='▶ Nghe thử';return}
-    const id=pick('nhac');if(!id){tryBtn.textContent='Chưa chọn nhạc';setTimeout(()=>tryBtn.textContent='▶ Nghe thử',1200);return}
-    data.ys=secs($('fAt').value);mPrepare(id);mStart(true,1);M.trying=true;tryBtn.textContent='■ Dừng';
-  };
-  const mmss=s=>Math.floor(s/60)+':'+String(s%60).padStart(2,'0');
-  $('fAt').value=mmss(DEFYS[pick('nhac')]||0);
-  chips.addEventListener('change',()=>{$('fAt').value=mmss(DEFYS[pick('nhac')]||0);if(M.trying){mStop(true);M.trying=false;tryBtn.textContent='▶ Nghe thử'}});
-  $('preview').onclick=()=>{
-    M.trying=false;tryBtn.textContent='▶ Nghe thử';
-    const s=$('fSong').value.trim();
-    data={to:$('fTo').value.trim()||'Gửi bạn',msg:$('fMsg').value.trim()||'…',sig:$('fSig').value.trim(),img,
-      song:/^https?:\/\//i.test(s)?s:'',yt:ytId(s),ys:secs($('fAt').value),nhac:pick('nhac'),box:pick('box')||'cam',cd:data.cd||''};
-    tab('recv');
-  };
+  /* bản thử (không ?k=): chỉ trang người nhận — huynh 27/11 bỏ hẳn phần "Người tặng" (khách chỉ nhắn ảnh + lời chúc, shop làm hộ) */
+  $('demoChip').hidden=false;
   reset();enter();
 }
 })();

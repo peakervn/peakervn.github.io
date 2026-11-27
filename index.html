@@ -504,16 +504,16 @@ const reduce=matchMedia('(prefers-reduced-motion: reduce)').matches;
 const weak=(navigator.hardwareConcurrency||4)<=4||(navigator.deviceMemory||8)<=4;
 const BOXES={cam:'Cam',hong:'Hồng',xanh:'Xanh ngọc',kem:'Kem',do:'Đỏ Noel'};
 const THEMES={noel:1};   // chủ đề giao diện (trường cd)
-const TRACKS={'ngot-ngao':'Ngọt ngào','vui-tuoi':'Vui tươi','sau-lang':'Sâu lắng','sinh-nhat':'Sinh nhật','xin-loi':'Xin lỗi'};
+const TRACKS={'ngot-ngao':'Ngọt ngào','vui-tuoi':'Vui tươi','sau-lang':'Sâu lắng','sinh-nhat':'Sinh nhật','xin-loi':'Xin lỗi','giang-sinh':'Giáng sinh'};
 /* nhạc Pixabay (Pixabay Content License): Romantic – andriig (thay Secret Love 26/11: huynh nghe thấy ghê) · A Small Miracle – Romarecord1973 ·
    Romantic Piano – PaulYudin · Happy Birthday – The_Mountain · Sad Piano Emotional Rain Story – alex-morgan.
    Giây bắt đầu mặc định = chỗ nhạc dâng lên (máy dò theo độ to, chưa nghe tai). */
-const DEFYS={'ngot-ngao':0,'vui-tuoi':0,'sau-lang':0,'sinh-nhat':20,'xin-loi':50};
+const DEFYS={'ngot-ngao':0,'vui-tuoi':0,'sau-lang':0,'sinh-nhat':20,'xin-loi':50,'giang-sinh':0};
 const TAPS=reduce?1:3;
 
 let data={to:'Gửi cậu',msg:$('fMsg').value,sig:'— một người bí mật',img:null,song:'',yt:'',ys:20,nhac:'ngot-ngao',box:'cam'};
 let ready=true;
-if(new URLSearchParams(location.search).get('cd')==='noel'&&!new URLSearchParams(location.search).has('k')){data.cd='noel';data.box='do';data.nhac='';data.yt='AnWgbRLAKag';data.ys=0;data.to='Gửi cậu';data.msg='Giáng sinh này, mong cậu luôn ấm áp, bình an và cười thật nhiều. Cảm ơn vì năm nay đã có cậu bên cạnh.'}   // xem thử: ?cd=noel
+if(new URLSearchParams(location.search).get('cd')==='noel'&&!new URLSearchParams(location.search).has('k')){data.cd='noel';data.box='do';data.nhac='giang-sinh';data.yt='';data.ys=0;data.to='Gửi cậu';data.msg='Giáng sinh này, mong cậu luôn ấm áp, bình an và cười thật nhiều. Cảm ơn vì năm nay đã có cậu bên cạnh.'}   // xem thử: ?cd=noel
 const S={taps:0,opened:false,pending:false,timers:[],typing:null,hearts:0};
 function later(fn,ms){S.timers.push(setTimeout(fn,ms))}
 

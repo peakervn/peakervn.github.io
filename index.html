@@ -724,7 +724,7 @@ function addVideo(ph,p,n){
 }
 async function loadVid(v){
   if(v.dataset.state)return;v.dataset.state='loading';
-  try{if(!VKEY)throw 0;const buf=await (await fetch(v.dataset.src,{cache:'force-cache'})).arrayBuffer();
+  try{if(!VKEY)throw 0;const buf=await (await fetch(v.dataset.src,{cache:'no-cache'})).arrayBuffer();
     const pt=await crypto.subtle.decrypt({name:'AES-GCM',iv:new Uint8Array(buf,0,12),additionalData:new TextEncoder().encode(VMA+':'+v.dataset.n)},VKEY,new Uint8Array(buf,12));
     v.src=URL.createObjectURL(new Blob([pt],{type:'video/mp4'}));v.dataset.state='ok';pageDots(true);
   }catch(e){v.dataset.state='bad'}

@@ -724,7 +724,7 @@ function addVideo(ph,p,n){
 }
 async function loadVid(v){
   if(v.dataset.state)return;v.dataset.state='loading';
-  try{if(!VKEY)throw 0;const buf=await (await fetch(v.dataset.src,{cache:'no-cache'})).arrayBuffer();
+  try{if(!VKEY)throw 0;const buf=await (await fetch(v.dataset.src+(VV?'?v='+encodeURIComponent(VV):''),{cache:'no-cache'})).arrayBuffer();
     const pt=await crypto.subtle.decrypt({name:'AES-GCM',iv:new Uint8Array(buf,0,12),additionalData:new TextEncoder().encode(VMA+':'+v.dataset.n)},VKEY,new Uint8Array(buf,12));
     v.src=URL.createObjectURL(new Blob([pt],{type:'video/mp4'}));v.dataset.state='ok';pageDots(true);
   }catch(e){v.dataset.state='bad'}
@@ -999,7 +999,7 @@ function norm(j){
         iw:+(p&&p.iw)||0,ih:+(p&&p.ih)||0,vid:/^m\/[a-z0-9]{4,16}-\d{1,2}\.bin$/.test(pv)?pv:null,poster:/^data:image\/jpeg;base64,[A-Za-z0-9+/=]+$/.test(po)?po:null,vw:+p.vw||0,vh:+p.vh||0}}).filter(p=>p.img||p.msg||p.vid)};
 }
 /* lời nhắn mã hoá: khoá nằm sau dấu # của link chip (không bao giờ gửi lên máy chủ) */
-let VKEY=null,VMA='';
+let VKEY=null,VMA='',VV='';
 async function unseal(j,k){
   const h=KEYH;
   if(!/^[A-Za-z0-9_-]{22}$/.test(h)){WHY='thiếu khoá';throw 0}if(!(window.crypto&&crypto.subtle)){WHY='máy không giải mã được';throw 0}
@@ -1024,7 +1024,7 @@ if(!KEYH){const m2=location.href.match(/%23([A-Za-z0-9_-]{22})/);if(m2)KEYH=m2[1
 if(k!==null){
   ready=false;data=norm({});document.body.classList.add('loading');reset();   // ẩn hộp tới khi biết đúng màu (huynh 27/11: hộp đổi màu giữa chừng)
   if(!/^[a-z0-9]{4,16}$/.test(k)){WHY='mã sai dạng';lost()}
-  else fetch('m/'+k+'.json',{cache:'no-store',signal:window.AbortSignal&&AbortSignal.timeout?AbortSignal.timeout(20000):undefined}).then(r=>{if(!r.ok){WHY='tải '+r.status;throw 0}return r.json()}).then(j=>j&&j.ct?unseal(j,k):j).then(j=>{
+  else fetch('m/'+k+'.json',{cache:'no-store',signal:window.AbortSignal&&AbortSignal.timeout?AbortSignal.timeout(20000):undefined}).then(r=>{if(!r.ok){WHY='tải '+r.status;throw 0}return r.json()}).then(j=>{if(j&&j.iv)VV=String(j.iv);return j&&j.ct?unseal(j,k):j}).then(j=>{
     if(!j||typeof j!=='object')throw 0;
     data=norm(j);ready=true;document.body.classList.remove('loading');
     const pend=S.pending,t=S.taps;reset();
